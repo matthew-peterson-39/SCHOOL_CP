@@ -1,17 +1,23 @@
-from classes.person import Person
+# student.py
 import csv
 
-class Student(Person):
-    all_student_lst=[]
-    
+class Student:
     def __init__(self, name, age, role, school_id, password):
-        super().__init__(name, age, role, password)
+        self.name = name 
+        self.age = age         
+        self.password = password
+        self.role = role
         self.school_id = school_id
-        
+
     @classmethod
-    def all_students(self):
+    def all_students(cls):
+        students = []
         with open('./data/students.csv', newline='') as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
-                self.all_student_lst.append(Student(**row))
-        return self.all_student_lst
+                new_student = cls(**row)
+                students.append(new_student)
+        # print(students)
+        return students
+    
+# Student.all_students()

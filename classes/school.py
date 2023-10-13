@@ -1,3 +1,4 @@
+# school.py
 from classes.staff import Staff
 from classes.student import Student
 
